@@ -1,8 +1,12 @@
 # MultiThread
-ReadWriteLock¶ÁĞ´ÎÄ¼ş 
+ReadWriteLockï¿½ï¿½Ğ´ï¿½Ä¼ï¿½ 
 https://blog.csdn.net/zengmingen/article/details/53283411
 
-javaÏß³Ì³Ø---±àĞ´×Ô¼ºµÄÏß³Ì³Ø
+javaï¿½ß³Ì³ï¿½---ï¿½ï¿½Ğ´ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ß³Ì³ï¿½
 https://blog.csdn.net/canot/article/details/50904001
 
 https://www.cnblogs.com/wxd0108/p/5479442.html
+
+atomicæ“ä½œ
+https://blog.csdn.net/chenchaofuck1/article/details/51720894
+https://blog.csdn.net/zhangerqing/article/details/43057799
