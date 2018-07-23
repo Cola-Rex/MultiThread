@@ -1,23 +1,32 @@
 package bankAccount;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Account {
-	private double balance; //’Àªß”‡∂Ó
+	private Lock accountLock = new ReentrantLock();
+	private double balance; //Ë¥¶Êà∑‰ΩôÈ¢ù
 	
 	/**
-	 * ¥ÊøÓ
+	 * Â≠òÊ¨æ
 	 */
 	public void deposit(double money) {
-		double newBalance = balance + money;
+		accountLock.lock();
 		try {
-			Thread.sleep(10);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			double newBalance = balance + money;
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			balance = newBalance;
+		} finally {
+			accountLock.unlock();
 		}
-		balance = newBalance;
 	}
 	
 	/**
-	 * ≤È—Ø”‡∂Ó
+	 * Ëé∑ÂæóË¥¶Êà∑‰ΩôÈ¢ù
 	 */
 	public double getBalance() {
 		return balance;

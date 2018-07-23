@@ -1,5 +1,6 @@
 package bankAccount;
 
+import java.util.Calendar;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -9,6 +10,7 @@ public class Test {
 		Account account = new Account();
 		ExecutorService service = Executors.newFixedThreadPool(1000);
 		
+		long start = Calendar.getInstance().getTimeInMillis();
 		for(int i = 1; i <= 1000; i++) {
 			service.execute(new AddMoneyThread(account, 1));
 		}
@@ -17,7 +19,9 @@ public class Test {
 		
 		while(!service.isTerminated()) {}
 		
-		System.out.println("ÕË»§Óà¶î" + account.getBalance());
+		long end = Calendar.getInstance().getTimeInMillis();
+		
+		System.out.println("è´¦æˆ·ä½™é¢" + account.getBalance() + "ï¼Œè€—æ—¶ï¼š" + (end - start) + "ms");
 	}
 
 }
