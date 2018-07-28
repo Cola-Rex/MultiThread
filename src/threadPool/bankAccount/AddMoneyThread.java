@@ -2,8 +2,8 @@ package bankAccount;
 
 public class AddMoneyThread implements Runnable{
 
-	private Account account; //存入账户
-	private double money; //存入金额
+	private Account account; //璐︽埛
+	private double money; //浣欓
 	
 	public AddMoneyThread(Account account, double money) {
 		this.account = account;
