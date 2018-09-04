@@ -1,4 +1,4 @@
-package tickets;
+package threadPool.tickets;
 
 public class MyThreadWithImplements implements Runnable {  
 	  
@@ -8,7 +8,7 @@ public class MyThreadWithImplements implements Runnable {
   
         for (int i = 0; i <= 100; i++) {  
             if(tickets>0){  
-                System.out.println(Thread.currentThread().getName()+"--Âô³öÆ±£º" + tickets--);  
+                System.out.println(Thread.currentThread().getName()+"--ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½" + tickets--);  
             }  
         }  
     }  
@@ -16,9 +16,9 @@ public class MyThreadWithImplements implements Runnable {
       
     public static void main(String[] args) {  
         MyThreadWithImplements myRunnable = new MyThreadWithImplements();  
-        Thread thread1 = new Thread(myRunnable, "´°¿ÚÒ»");  
-        Thread thread2 = new Thread(myRunnable, "´°¿Ú¶þ");  
-        Thread thread3 = new Thread(myRunnable, "´°¿ÚÈý");  
+        Thread thread1 = new Thread(myRunnable, "ï¿½ï¿½ï¿½ï¿½Ò»");  
+        Thread thread2 = new Thread(myRunnable, "ï¿½ï¿½ï¿½Ú¶ï¿½");  
+        Thread thread3 = new Thread(myRunnable, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");  
   
         thread1.start();  
         thread2.start();  

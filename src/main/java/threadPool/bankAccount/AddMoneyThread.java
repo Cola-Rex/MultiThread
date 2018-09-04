@@ -1,4 +1,4 @@
-package bankAccount;
+package threadPool.bankAccount;
 
 public class AddMoneyThread implements Runnable{
 

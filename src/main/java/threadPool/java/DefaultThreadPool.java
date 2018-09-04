@@ -1,4 +1,4 @@
-package java;
+package threadPool.java;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,22 +10,22 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job>{
 
-    // Ïß³Ì³ØÎ¬»¤¹¤×÷ÕßÏß³ÌµÄ×î´óÊýÁ¿
+    // ï¿½ß³Ì³ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private static final int MAX_WORKER_NUMBERS = 10;
-    // Ïß³Ì³ØÎ¬»¤¹¤×÷ÕßÏß³ÌµÄÄ¬ÈÏÖµ
+    // ï¿½ß³Ì³ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½Ä¬ï¿½ï¿½Öµ
     private static final int DEFAULT_WORKER_NUMBERS = 5;
-    // Ïß³Ì³ØÎ¬»¤¹¤×÷ÕßÏß³ÌµÄ×îÐ¡ÊýÁ¿
+    // ï¿½ß³Ì³ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½
     private static final int MIN_WORKER_NUMBERS = 1;
-    // Î¬»¤Ò»¸ö¹¤×÷ÁÐ±í,ÀïÃæ¼ÓÈë¿Í»§¶Ë·¢ÆðµÄ¹¤×÷
+    // Î¬ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½
     private final LinkedList<Job> jobs = new LinkedList<Job>();
-    // ¹¤×÷ÕßÏß³ÌµÄÁÐ±í
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½ï¿½Ð±ï¿½
     private final List<Worker> workers = Collections.synchronizedList(new ArrayList<Worker>());
-    // ¹¤×÷ÕßÏß³ÌµÄÊýÁ¿
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½ï¿½ï¿½ï¿½ï¿½
     private int workerNum;
-    // Ã¿¸ö¹¤×÷ÕßÏß³Ì±àºÅÉú³É
+    // Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private AtomicLong threadNum = new AtomicLong();
 
- //Éú³ÉÏß³Ì³Ø
+ //ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì³ï¿½
 public DefaultThreadPool() {
         this.workerNum = DEFAULT_WORKER_NUMBERS;
         initializeWorkers(this.workerNum);
@@ -39,13 +39,13 @@ public DefaultThreadPool() {
         }
         initializeWorkers(this.workerNum);
     }
-//³õÊ¼»¯Ã¿¸ö¹¤×÷ÕßÏß³Ì
+//ï¿½ï¿½Ê¼ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
 private void initializeWorkers(int num) {
         for (int i = 0; i < num; i++) {
             Worker worker = new Worker();
-            //Ìí¼Óµ½¹¤×÷ÕßÏß³ÌµÄÁÐ±í
+            //ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½ï¿½Ð±ï¿½
             workers.add(worker);
-            //Æô¶¯¹¤×÷ÕßÏß³Ì
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
             Thread thread = new Thread(worker);
             thread.start();
         }
@@ -53,22 +53,22 @@ private void initializeWorkers(int num) {
 
 public void execute(Job job) {
         if (job != null) {
-        //¸ù¾ÝÏß³ÌµÄ"µÈ´ý/Í¨Öª»úÖÆ"ÕâÀï±ØÐë¶Ôjobs¼ÓËø
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½"ï¿½È´ï¿½/Í¨Öªï¿½ï¿½ï¿½ï¿½"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jobsï¿½ï¿½ï¿½ï¿½
             synchronized (jobs) {
                 jobs.addLast(job);
                 jobs.notify();
             }
         }
     }
-    //¹Ø±ÕÏß³Ì³Ø¼´¹Ø±ÕÃ¿¸ö¹¤×÷ÕßÏß³Ì
+    //ï¿½Ø±ï¿½ï¿½ß³Ì³Ø¼ï¿½ï¿½Ø±ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
      public void shutdown() {
         for (Worker w : workers) {
             w.shutdown();
         }
     }
-      //Ôö¼Ó¹¤×÷ÕßÏß³Ì
+      //ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
         public void addWorkers(int num) {
-        //¼ÓËø£¬·ÀÖ¹¸ÃÏß³Ì»¹Ã´Ôö¼ÓÍê³É¶øÏÂ¸öÏß³Ì¼ÌÐøÔö¼Óµ¼ÖÂ¹¤×÷ÕßÏß³Ì³¬¹ý×î´óÖµ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ß³Ì»ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½Â¸ï¿½ï¿½ß³Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Â¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
         synchronized (jobs) {
             if (num + this.workerNum > MAX_WORKER_NUMBERS) {
                 num = MAX_WORKER_NUMBERS - this.workerNum;
@@ -77,16 +77,16 @@ public void execute(Job job) {
             this.workerNum += num;
         }
     }
-    //¼õÉÙ¹¤×÷ÕßÏß³Ì
+    //ï¿½ï¿½ï¿½Ù¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
 public void removeWorkers(int num) {
         synchronized (jobs) {
         if(num>=this.workerNum){
-                  throw new IllegalArgumentException("³¬¹ýÁËÒÑÓÐµÄÏß³ÌÊýÁ¿");
+                  throw new IllegalArgumentException("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½");
                   }
             for (int i = 0; i < num; i++) {
                 Worker worker = workers.get(i);
                 if (worker != null) {
-                //¹Ø±Õ¸ÃÏß³Ì²¢´ÓÁÐ±íÖÐÒÆ³ý
+                //ï¿½Ø±Õ¸ï¿½ï¿½ß³Ì²ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½Æ³ï¿½
                     worker.shutdown();
                     workers.remove(i);
                 }
@@ -99,36 +99,36 @@ public int getJobSize() {
         // TODO Auto-generated method stub
         return workers.size();
     }
-//¶¨Òå¹¤×÷ÕßÏß³Ì
+//ï¿½ï¿½ï¿½å¹¤ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
 class Worker implements Runnable {
-        // ±íÊ¾ÊÇ·ñÔËÐÐ¸Ãworker
+        // ï¿½ï¿½Ê¾ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½worker
         private volatile boolean running = true;
 
         public void run() {
             while (running) {
                 Job job = null;
-                //Ïß³ÌµÄµÈ´ý/Í¨Öª»úÖÆ
+                //ï¿½ß³ÌµÄµÈ´ï¿½/Í¨Öªï¿½ï¿½ï¿½ï¿½
                 synchronized (jobs) {
                     if (jobs.isEmpty()) {
                         try {
-                            jobs.wait();//Ïß³ÌµÈ´ý»½ÐÑ
+                            jobs.wait();//ï¿½ß³ÌµÈ´ï¿½ï¿½ï¿½ï¿½ï¿½
                         } catch (InterruptedException e) {
-                            //¸ÐÖªµ½Íâ²¿¶Ô¸ÃÏß³ÌµÄÖÐ¶Ï²Ù×÷£¬·µ»Ø
+                            //ï¿½ï¿½Öªï¿½ï¿½ï¿½â²¿ï¿½Ô¸ï¿½ï¿½ß³Ìµï¿½ï¿½Ð¶Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                             Thread.currentThread().interrupt();
                             return;
                         }
                     }
-                    // È¡³öÒ»¸öjob
+                    // È¡ï¿½ï¿½Ò»ï¿½ï¿½job
                     job = jobs.removeFirst();
                 }
-                //Ö´ÐÐjob
+                //Ö´ï¿½ï¿½job
                 if (job != null) {
                     job.run();
                 }
             }
         }
 
-        // ÖÕÖ¹¸ÃÏß³Ì
+        // ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ß³ï¿½
         public void shutdown() {
             running = false;
         }

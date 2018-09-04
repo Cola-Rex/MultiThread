@@ -1,4 +1,4 @@
-package tickets;
+package threadPool.tickets;
 
 public class MyThreadWithExtends extends Thread {  
 	  
@@ -9,7 +9,7 @@ public class MyThreadWithExtends extends Thread {
   
         for (int i = 0; i <= 100; i++) {  
             if(tickets>0){  
-                System.out.println(Thread.currentThread().getName()+"--Âô³öÆ±£º" + tickets--);  
+                System.out.println(Thread.currentThread().getName()+"--ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½" + tickets--);  
             }  
         }  
     }  
@@ -24,7 +24,7 @@ public class MyThreadWithExtends extends Thread {
         thread2.start();  
         thread3.start();  
           
-        //Ã¿¸öÏß³Ì¶¼¶ÀÁ¢£¬²»¹²Ïí×ÊÔ´£¬Ã¿¸öÏß³Ì¶¼Âô³öÁË10ÕÅÆ±£¬×Ü¹²Âô³öÁË30ÕÅ¡£Èç¹ûÕæÂôÆ±£¬¾ÍÓĞÎÊÌâÁË¡£  
+        //Ã¿ï¿½ï¿½ï¿½ß³Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ß³Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½Æ±ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½30ï¿½Å¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½  
     }  
   
 }  

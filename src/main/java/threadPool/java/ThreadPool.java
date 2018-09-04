@@ -1,8 +1,8 @@
-package java;
+package threadPool.java;
 
 public interface ThreadPool<Job extends Runnable>{
 
-	//执行一个任务job,这个job必须实现Runnable
+	//执锟斤拷一锟斤拷锟斤拷锟斤拷job,锟斤拷锟絡ob锟斤拷锟斤拷实锟斤拷Runnable
 	void execute(Job job);
 	
 	void shutdown();

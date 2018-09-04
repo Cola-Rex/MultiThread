@@ -1,3 +1,4 @@
+package star;
 //今天偶然看到个题，大概题意：一个Map，key为String，value为对应key的put次数，要求线程安全。
 
 import java.util.concurrent.ConcurrentHashMap;
