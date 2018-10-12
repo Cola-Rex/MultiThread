@@ -1,8 +1,8 @@
-package countdownLatch;
+package concurrentUtil;
 
 import java.util.concurrent.CountDownLatch;
 
-public class Example {
+public class CountDownLatchExample {
 
 	public static void main(String[] args) {
 		final CountDownLatch latch = new CountDownLatch(2);
