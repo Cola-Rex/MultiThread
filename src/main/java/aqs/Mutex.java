@@ -44,4 +44,9 @@ public class Mutex implements Lock{
 	public boolean tryLock(long timeout, TimeUnit unit) throws InterruptedException {
 		return sync.tryAcquireNanos(1, unit.toNanos(timeout));
 	}
+	@Override
+	public void lockInterruptibly() throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+	}
 }
