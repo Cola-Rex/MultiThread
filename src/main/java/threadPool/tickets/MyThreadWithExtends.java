@@ -1,5 +1,9 @@
 package threadPool.tickets;
 
+/**
+ * 当前形式，因为单继承的原则，无法再继承别的类，
+ * 而且还有1个很神奇的现象，tickets 不是线程共享的，每个线程都能执行10次 tickets--
+ */
 public class MyThreadWithExtends extends Thread {  
 	  
     private int tickets = 10;  
@@ -23,8 +27,6 @@ public class MyThreadWithExtends extends Thread {
         thread1.start();  
         thread2.start();  
         thread3.start();  
-          
-        //不推荐 extends Thread 的形式，因为单继承原则
     }  
   
 }  
