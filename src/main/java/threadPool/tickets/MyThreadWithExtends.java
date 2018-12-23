@@ -9,7 +9,7 @@ public class MyThreadWithExtends extends Thread {
   
         for (int i = 0; i <= 100; i++) {  
             if(tickets>0){  
-                System.out.println(Thread.currentThread().getName()+"--����Ʊ��" + tickets--);  
+                System.out.println(Thread.currentThread().getName()+"--剩余票数" + tickets--);  
             }  
         }  
     }  
@@ -24,7 +24,7 @@ public class MyThreadWithExtends extends Thread {
         thread2.start();  
         thread3.start();  
           
-        //ÿ���̶߳���������������Դ��ÿ���̶߳�������10��Ʊ���ܹ�������30�š��������Ʊ�����������ˡ�  
+        //不推荐 extends Thread 的形式，因为单继承原则
     }  
   
 }  
