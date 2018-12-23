@@ -1,4 +1,4 @@
-package threadPool.tickets;
+package threadPrint.ticketsCount;
 
 /**
  * 当前形式，因为单继承的原则，无法再继承别的类，

@@ -1,4 +1,4 @@
-package threadPool.tickets;
+package threadPrint.ticketsCount;
 
 /**
  * 当前形式下，tickets 对所有线程是共享的，故3个线程一共执行10次 tickets--
