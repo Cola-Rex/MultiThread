@@ -1,8 +1,8 @@
-package future;
+package future.custom;
 
-import future.data.Data;
-import future.data.FutureData;
-import future.data.RealData;
+import future.custom.data.Data;
+import future.custom.data.FutureData;
+import future.custom.data.RealData;
 
 public class Client {
 

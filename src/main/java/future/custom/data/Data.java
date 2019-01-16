@@ -1,4 +1,4 @@
-package future.data;
+package future.custom.data;
 
 public interface Data {
 

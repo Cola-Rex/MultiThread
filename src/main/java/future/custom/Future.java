@@ -1,6 +1,6 @@
-package future;
+package future.custom;
 
-import future.data.Data;
+import future.custom.data.Data;
 
 public class Future {
 

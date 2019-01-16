@@ -1,4 +1,4 @@
 /**
  * Future模式
  */
-package future;
+package future.custom;
