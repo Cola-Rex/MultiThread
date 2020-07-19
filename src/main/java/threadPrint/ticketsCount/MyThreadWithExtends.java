@@ -1,5 +1,9 @@
-package threadPool.tickets;
+package threadPrint.ticketsCount;
 
+/**
+ * 当前形式，因为单继承的原则，无法再继承别的类，
+ * 而且还有1个很神奇的现象，tickets 不是线程共享的，每个线程都能执行10次 tickets--
+ */
 public class MyThreadWithExtends extends Thread {  
 	  
     private int tickets = 10;  
@@ -9,7 +13,7 @@ public class MyThreadWithExtends extends Thread {
   
         for (int i = 0; i <= 100; i++) {  
             if(tickets>0){  
-                System.out.println(Thread.currentThread().getName()+"--����Ʊ��" + tickets--);  
+                System.out.println(Thread.currentThread().getName()+"--剩余票数" + tickets--);  
             }  
         }  
     }  
@@ -23,8 +27,6 @@ public class MyThreadWithExtends extends Thread {
         thread1.start();  
         thread2.start();  
         thread3.start();  
-          
-        //ÿ���̶߳���������������Դ��ÿ���̶߳�������10��Ʊ���ܹ�������30�š��������Ʊ�����������ˡ�  
     }  
   
 }  
